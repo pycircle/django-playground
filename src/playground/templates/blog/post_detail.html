@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block menu %}
+<a href="{% url 'post_detail' pk=post.pk %}">Post detail</a>&nbsp;
+<a href="{% url 'post_detail_reverse' pk=post.pk %}">Post detail reverse</a>
+{% endblock %}
+
+{% block content %}
+
+<p>{{ post.author.username }}, dodane {{ post.posted|date }}</p>
+<p>{{ post.text }}</p>
+<a href="{{ post.url }}">LINK</a>
+
+{% endblock %}

@@ -21,3 +21,7 @@ __pycache__
 
 # Rope
 .ropeproject
+
+*~
+.DS_Store
+db.sqlite3

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}lista postów{% endblock%}
+{% block content %}
+
+{% if not segregated %}
+<p>Brak postów. </p>
+{% else %}
+<ol>
+{% for category, posts in segregated %}
+    <li>{{ category.name }}</li>
+    <ul>
+        {% for post in posts %}
+            <li><a href="{% url 'post_detail' pk=post.pk %}">{{ post }}</a></li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+</ol>
+{% endif %}
+<a href="{% url 'post_create' %}">Dodaj post</a>
+{% endblock %}
