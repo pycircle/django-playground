@@ -10,10 +10,10 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^post-list/', blog_views.post_list, name="post_list"),
+    url(r'^post-list/', blog_views.PostList.as_view(), name="post_list"),
     url(r'^post/(?P<pk>\d+)/', blog_views.post_detail, name="post_detail"),
     url(r'^post_reverse/(?P<pk>\d+)/', blog_views.post_detail_reverse,
         name="post_detail_reverse"),
-    url(r'^post/add/', blog_views.post_create, name="post_create"),
+    url(r'^post/add/', blog_views.PostCreate.as_view(), name="post_create"),
     url(r'^$', RedirectView.as_view(url='/post/add/')),
 )

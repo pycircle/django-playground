@@ -28,7 +28,7 @@ class Post(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(verbose_name="Nazwa", max_length=100)
+    name = models.CharField(verbose_name="Nazwa", max_length=200)
     subcategory = models.ForeignKey(
         "self", verbose_name="Podkategoria", null=True, blank=True)
 
