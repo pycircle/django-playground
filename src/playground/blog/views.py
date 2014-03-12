@@ -38,28 +38,12 @@ class PostCreate(View):
         form = PostForm(self.request.POST)
 
         if not form.is_valid():
-            return render(self.request, 'blog/post_create.html', {'form': PostForm()})
+            return render(self.request, 'blog/post_create.html', {'form': form})
 
         post = form.save()
         post.author = self.request.user
         post.save()
         return redirect(reverse('post_detail', kwargs={'pk': post.pk}))
-
-
-def post_create(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-
-        if form.is_valid():
-            post = form.save()
-            post.author = request.user
-            post.save()
-            return redirect(reverse('post_detail', kwargs={'pk': post.pk}))
-
-    else:
-        form = PostForm()
-
-    return render(request, 'blog/post_create.html', {'form': form})
 
 
 def post_detail_reverse(request, pk):
