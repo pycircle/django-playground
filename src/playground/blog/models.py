@@ -34,6 +34,13 @@ class Category(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
         verbose_name_plural = "Categories"
+
+"""
+Zadanie:
+Dodaj verbose_name (liczba pojedyncza)
+oraz verbose_name_plural dla Postów.
+Spraw, żeby admin wyświetlał “Kategorie” a nie “Categories”
+"""

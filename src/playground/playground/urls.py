@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
+from django.views.generic import TemplateView
 
 from playground.blog import views as blog_views
 
@@ -16,4 +17,6 @@ urlpatterns = patterns(
         name="post_detail_reverse"),
     url(r'^post/add/', blog_views.PostCreate.as_view(), name="post_create"),
     url(r'^$', RedirectView.as_view(url='/post/add/')),
+    url(r'^template/$',TemplateView.as_view(template_name='simple_view.html'), name="template"),
+
 )

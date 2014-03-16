@@ -26,6 +26,13 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Context processors
+import django.conf.global_settings as DEFAULT_SETTINGS
+
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    'playground.addons.context_processors.custom_proc',
+)
+
 
 # Application definition
 
@@ -40,7 +47,8 @@ INSTALLED_APPS = (
     # Third-party modules
     'south',
     # Our apps
-    'playground.blog'
+    'playground.blog',
+    'playground.template_stuff',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,6 +58,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'playground.addons.middlewares.OpenshiftRedirectMiddleware',
 )
 
 ROOT_URLCONF = 'playground.playground.urls'

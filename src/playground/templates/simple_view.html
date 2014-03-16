@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}context precessor, template{% endblock %}
+
+{% block content %}
+
+{% load extra_features %}
+<p>
+{{ app|replace_whitespace:" Zamiast bialych znakow " }}
+{{ ip_address }}<br>
+Liczba zer w IP: {# ip_address|count:"0" #} {# to jest komentarz zmień po napisaniu filtru na {{ }} #}
+</p>
+<p> {# numbers #} {# Twoj context_processor musi to obsłużyć #}</p>
+
+<p>Teraz jest: {% current_time "%Y-%m-%d %I:%M %p" %}.</p>
+Liczba zer w IP -1: {# minusone ip_address|count:"0" #} {# po napisaniu filtru na {% %} #}
+<p>
+{% do_upper %}
+ wszystko będzie dużymi literami {{ app }}
+{% endupper %}
+
+{# ZADANIA #}
+{% categories %}
+
+{# pow ip_address|count:"0" 8 #}
+{# change_to_trolol #}
+    To powinno być samym napisem "trolol"
+{# endtrolol #}
+
+
+{% endblock %}
