@@ -15,7 +15,7 @@ setup(
 manage = playground.manage:main
 ''',
     install_requires=[
-        'Django',
+        'Django == 1.6.2',
         'South'
     ]
 )
